@@ -1,3 +1,5 @@
+(Not published to npm registry yet)
+
 substor
 =======
 
@@ -36,32 +38,32 @@ The following example is how I have used substor in an API test using mocha.
 
 In hook.js
 
-    ```javascript
-    before(function () {
-      return substor.connect({host: 'redisHost', port: 'redisPort'});
-    });
-    ```
+```javascript
+before(function () {
+  return substor.connect({host: 'redisHost', port: 'redisPort'});
+});
+```
 
 In testFile.js
 
-    ```javascript
-    it('should do something', function () {
+```javascript
+it('should do something', function () {
 
-        return substore.subscribeToChannels(['redisChannelName'])
-        .then(function(){
-          // Do something that triggers an API call that results in a message or messages to be placed on Redis channel 'redisChannelName'
-        })
-        .then(function(){
-           return substore.getLatestMessageOnChannel('redisChannelName')
-        })
-        .then(function(latestMessageOnRedisChannelName){
-          // latestMessageOnRedisChannelName is a String
-          // Do something to the message.
-          // Once done ensure to unsubscribe from the Redis channel(s)
-          return substore.unsubscribeFromAllChannels()
-        })
-    });
-    ```
+  return substore.subscribeToChannels(['redisChannelName'])
+    .then(function(){
+      // Do something that triggers an API call that results in a message or messages to be placed on Redis channel 'redisChannelName'
+    })
+    .then(function(){
+      return substore.getLatestMessageOnChannel('redisChannelName')
+    })
+    .then(function(latestMessageOnRedisChannelName){
+      // latestMessageOnRedisChannelName is a String
+      // Do something to the message.
+      // Once done ensure to unsubscribe from the Redis channel(s)
+      return substore.unsubscribeFromAllChannels()
+    })
+});
+```
 
 API
 ---
@@ -69,24 +71,33 @@ API
 ```javascript
 connect(options)
 ```
-
-Param       Type        Description
-options     object      Mandatory attributes are host and port, representing the Redis host and port.
-                        e.g. {host: '127.0.0.1', port: '6379'}
-
-                        Optional attribute: defaultTimeOutMilliseconds. Provide an integer to override the default of 700 milliseconds. This value is the wait time before getting a message (or message count) from a subscribed channel.
-
-                        Optional attribute: debug. Set to true if you need to see more logs.
+| Param | Type | Description |
+|---|---|---|
+|options | object | Mandatory attributes are host and port, representing the Redis host and port. e.g. {host: '127.0.0.1', port: '6379'}. Optional attribute: defaultTimeOutMilliseconds. Provide an integer to override the default of 700 milliseconds. This value is the wait time before getting a message (or message count) from a subscribed channel. Optional attribute: debug. Set to true if you need to see more logs.|
 
 
-    subscribeToChannels(channels)
 
-    unsubscribeFromAllChannels()
 
-    getQueue()
+```javascript
+subscribeToChannels(channels)
+```
 
-    getMessageCount(channel)
+```javascript
+unsubscribeFromAllChannels()
+```
 
-    getLatestMessageOnChannel(channel)
+```javascript
+getQueue()
+```
 
-    getMessageOnChannel(position, channel)
+```javascript
+getMessageCount(channel)
+```
+
+```javascript
+getLatestMessageOnChannel(channel)
+```
+
+```javascript
+getMessageOnChannel(position, channel)
+```
