@@ -75,17 +75,17 @@ All promises returned from methods are Promises/A+ compliant. Underneath the hoo
 |---|---|---|
 |options | object | *Attributes* <br />**host** - (mandatory) Redis host (e.g. host: '127.0.0.1') <br />**port** - (mandatory) Redis port (e.g. port: '6379') <br />**defaultTimeOutMilliseconds** - (optional) an integer to override the default of 700 milliseconds. This value is the wait time before getting a message (or message count) from a subscribed channel. <br />**debug** - (optional) set to true if you need to see more logs.|
 
-**Returns** Promise
+**Returns** Promise.
 
 ###subscribeToChannels(channels)
 | Param | Type | Description |
 |---|---|---|
 | channels | Array | An array of Redis channels. Each element is a String, e.g. ['channel1', 'channel2'] |
 
-**Returns** Promise 
+**Returns** Promise.
 
 ###unsubscribeFromAllChannels()
-**Returns** Promise 
+**Returns** Promise. 
 
 ###getQueue()
 **Returns** object consisting of all messages received on all channels subscribed to. 
@@ -102,7 +102,7 @@ All promises returned from methods are Promises/A+ compliant. Underneath the hoo
 |---|---|---|
 | channel | String | Name of channel |
 
-**Returns** Promise that resolves to the message (String) last received on the specified **channel**
+**Returns** Promise that resolves to the message (String) last received on the specified **channel**.
 
 ###getMessageOnChannel(position, channel)
 | Param | Type | Description |
@@ -110,4 +110,4 @@ All promises returned from methods are Promises/A+ compliant. Underneath the hoo
 | position | Integer | Position of message received, 1 being the latest |
 | channel | String | Name of channel |
 
-**Returns** Promise that resolves to the the message (String) in **position** on the specified **channel**
+**Returns** Promise that resolves to the the message (String) in **position** on the specified **channel**.
