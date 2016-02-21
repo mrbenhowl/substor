@@ -70,55 +70,41 @@ Methods
 
 All promises returned from methods are Promises/A+ compliant. Underneath the hood [q](https://github.com/kriskowal/q) is used. 
 
-```javascript
-connect(options)
-```
+###connect(options)
 | Param | Type | Description |
 |---|---|---|
 |options | object | *Attributes* <br />**host** - (mandatory) Redis host (e.g. host: '127.0.0.1') <br />**port** - (mandatory) Redis port (e.g. port: '6379') <br />**defaultTimeOutMilliseconds** - (optional) an integer to override the default of 700 milliseconds. This value is the wait time before getting a message (or message count) from a subscribed channel. <br />**debug** - (optional) set to true if you need to see more logs.|
 
 **Returns** Promise
 
-```javascript
-subscribeToChannels(channels)
-```
+###subscribeToChannels(channels)
 | Param | Type | Description |
 |---|---|---|
 | channels | Array | An array of Redis channels. Each element is a String, e.g. ['channel1', 'channel2'] |
 
 **Returns** Promise 
 
-```javascript
-unsubscribeFromAllChannels()
-```
+###unsubscribeFromAllChannels()
 **Returns** Promise 
 
-```javascript
-getQueue()
-```
+###getQueue()
 **Returns** object consisting of all messages received on all channels subscribed to. 
 
-```javascript
-getMessageCount(channel)
-```
+###getMessageCount(channel)
 | Param | Type | Description |
 |---|---|---|
 | channel | String | Name of channel |
 
 **Returns** Promise that resolves to the number of messages received on the specified **channel** since it was subscribed to. 
 
-```javascript
-getLatestMessageOnChannel(channel)
-```
+###getLatestMessageOnChannel(channel)
 | Param | Type | Description |
 |---|---|---|
 | channel | String | Name of channel |
 
 **Returns** Promise that resolves to the message (String) last received on the specified **channel**
 
-```javascript
-getMessageOnChannel(position, channel)
-```
+###getMessageOnChannel(position, channel)
 | Param | Type | Description |
 |---|---|---|
 | position | Integer | Position of message received, 1 being the latest |
