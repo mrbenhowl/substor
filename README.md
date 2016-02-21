@@ -1,5 +1,3 @@
-(Not published to npm registry yet)
-
 substor
 =======
 
